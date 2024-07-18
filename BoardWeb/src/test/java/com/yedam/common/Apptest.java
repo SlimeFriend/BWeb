@@ -1,19 +1,15 @@
 package com.yedam.common;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.yedam.mapper.StudentMapper;
+import com.yedam.service.BoardService;
+import com.yedam.service.BoardServiceImpl;
 
 public class Apptest {
 	public static void main(String[] args) {
 		
-		SqlSession sqlSession = //
-				DataSource.getInstance().openSession();
-		StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 		
-		mapper.studentList()//
-			.forEach(student -> {
-				System.out.println(student);
-			});
+		
+		BoardService svc = new BoardServiceImpl();
+		svc.boardList().forEach(System.out::println);
+		System.out.println("-end-");
 	}
 }
