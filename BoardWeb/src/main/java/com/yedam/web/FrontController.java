@@ -13,7 +13,11 @@ import com.yedam.common.Control;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardForm;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.DeleteBoard;
 import com.yedam.control.StudentListControl;
+import com.yedam.control.UpdateBoard;
+import com.yedam.control.mdBoardControl;
+import com.yedam.control.rmBoardControl;
 
 /*
  * FrontController 역할은 사용자의 모든 요청을 처리
@@ -37,6 +41,14 @@ public class FrontController extends HttpServlet{
 		//학생목록
 		map.put("/stdList.do", new StudentListControl());
 		map.put("/board.do", new Board());
+		//삭제 화면
+		map.put("/removeBoard.do", new rmBoardControl());
+		//삭제 기능
+		map.put("/deleteBoard.do", new DeleteBoard());
+		//수정 화면
+		map.put("/modifyBoard.do", new mdBoardControl());
+		//수정 기능
+		map.put("/updateBoard.do", new UpdateBoard());
 	}
 
 	@Override
@@ -46,9 +58,9 @@ public class FrontController extends HttpServlet{
 		String uri = req.getRequestURI(); 
 		// URL(http://localhosst/BoardWeb/boardList.do) vs URI(/BoardWeb/boardList.do)
 		String context = req.getContextPath(); // 프로젝트 명.
-		String path = uri.substring(context.length()); // boardList.do;
+		String path = uri.substring(context.length()); // /boardList.do;
 		
-		System.out.println(path);
+		System.out.println(path);  //board.do
 		Control sub = map.get(path);
 		sub.exec(req, resp);
 	}

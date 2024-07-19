@@ -9,7 +9,12 @@ public class Apptest {
 		
 		
 		BoardService svc = new BoardServiceImpl();
-		svc.boardList().forEach(System.out::println);
+		SearchDTO search = new SearchDTO();
+		search.setSearchCondition("T");
+		search.setKeyword("java");
+		search.setPage(1);
+		
+		svc.boardList(search).forEach(System.out::println);
 		System.out.println("-end-");
 	}
 }

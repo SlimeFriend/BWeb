@@ -1,4 +1,4 @@
-package com.yedam.web;
+package com.yedam.control;
 
 import java.io.IOException;
 
@@ -11,11 +11,11 @@ import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
-public class Board implements Control {
+public class mdBoardControl implements Control {
 
 	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
 		String bno = req.getParameter("bno");
 		
@@ -24,7 +24,13 @@ public class Board implements Control {
 		
 		req.setAttribute("board", board);
 		
-		req.getRequestDispatcher("WEB-INF/jsp/board.jsp").forward(req, resp);
+		
+		
+		
+		req.getRequestDispatcher("WEB-INF/jsp/modifyForm.jsp")
+		.forward(req, resp);
+		
+		
 
 	}
 

@@ -8,24 +8,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.common.PageDTO;
+import com.yedam.common.SearchDTO;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
-public class BoardListControl implements Control{
+public class BoardListControl implements Control {
 
 	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp)  //
+	public void exec(HttpServletRequest req, HttpServletResponse resp) //
 			throws ServletException, IOException {
+
+		String page = req.getParameter("page");
+		page = page == null ? "1" : page;
 		req.setAttribute("myName", "홍길동");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		SearchDTO search = new SearchDTO();
+		search.setKeyword(kw);
+		search.setPage(Integer.parseInt(page));
+		search.setSearchCondition(sc);
+		
+		
+
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList();
+		List<BoardVO> list = svc.boardList(search);
 		req.setAttribute("boardList", list);
-		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp")
-		.forward(req, resp);
+		
+
+		
+		// paging
+		int totalCnt = svc.totalCount(search);
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt);
+		req.setAttribute("paging", pageDTO);
+		req.setAttribute("search", search);
+
+		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);
 	}
-
-
-
 
 }

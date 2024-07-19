@@ -15,6 +15,66 @@
   	order by board_no
   </select>
   
+  <!-- 페이징 목록 -->
+  <select id="selectListPaging" parameterType="com.yedam.common.SearchDTO" resultType="com.yedam.vo.BoardVO">
+  select b.*
+	from    (select rownum rn, a.* 
+        	from    (select * 
+                	from tbl_board 
+                	
+						where 
+						<choose>
+							<when test="searchCondition == 'T'.toString() ">
+							title like '%'|| #{keyword} || '%'
+							</when>
+							
+							<when test="searchCondition == 'W'.toString() ">
+							writer like '%'|| #{keyword} || '%'
+							</when>
+							
+							<when test="searchCondition == 'TW'.toString() ">
+							title like '%'|| #{keyword} || '%' or
+							writer like '%'|| #{keyword} || '%'
+							</when>
+							<otherwise>
+							1 = 1
+							</otherwise>
+						</choose>
+						order by board_no ) a ) b
+		where b.rn > (#{page} -1) * 5 
+		<![CDATA[
+		 and b.rn <=(#{page} *5)
+		]]>
+							
+  
+  </select>
+  
+  <!-- 페이징 계산용 전체건수. -->
+  <select id="selectTotalCount" parameterType="com.yedam.common.SearchDTO">
+  	select count(1)
+  	from tbl_board
+  	where 
+						<choose>
+							<when test="searchCondition == 'T'.toString() ">
+							title like '%'|| #{keyword} || '%'
+							</when>
+							
+							<when test="searchCondition == 'W'.toString() ">
+							writer like '%'|| #{keyword} || '%'
+							</when>
+							
+							<when test="searchCondition == 'TW'.toString() ">
+							title like '%'|| #{keyword} || '%' or
+							writer like '%'|| #{keyword} || '%'
+							</when>
+							<otherwise>
+							1 = 1
+							</otherwise>
+						</choose>
+  </select>
+  
+  
+  
   <insert id = "insertBoard" parameterType = "com.yedam.vo.BoardVO">
   	insert into tbl_board (board_no, title, writer, content)
   	values (board_seq.nextval, #{title}, #{writer}, #{content})
@@ -22,7 +82,8 @@
   
   <update id= "updateBoard" parameterType = "com.yedam.vo.BoardVO">
   	update tbl_board 
-  	set title = {#title}, content = {#content} 
+  	set title = {#title}, 
+  			content = {#content} 
   	where board_no = {#boardNo} 
 
   	<set>
@@ -37,11 +98,12 @@
   	where board_no = #{boardNo}
   </update>
   
-  <delete id = "deleteBoard" parameterType = "com.yedam.vo.BoardVO">
-  	delete tbl_board where board_no = #{boardNO}
+  <delete id = "deleteBoard" parameterType="int">
+  	delete tbl_board 
+  	where board_no = #{boardNO}
   </delete>
   
-    <select id = "selectBoard" resultType = "com.yedam.vo.BoardVO">
+    <select id = "selectBoard" parameterType="com.yedam.vo.BoardVO">
   	select board_no
   	       ,title
   	       ,content

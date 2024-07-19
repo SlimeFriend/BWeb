@@ -1,4 +1,4 @@
-package com.yedam.web;
+package com.yedam.control;
 
 import java.io.IOException;
 
@@ -9,22 +9,26 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
-import com.yedam.vo.BoardVO;
 
-public class Board implements Control {
+public class DeleteBoard implements Control {
 
 	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String bno = req.getParameter("bno");
 		
 		BoardService svc = new BoardServiceImpl();
-		BoardVO board = svc.getBoard(Integer.parseInt(bno));
+		if(svc.removeBoard(Integer.parseInt(bno))) {
+			//목록으로 이동
+			resp.sendRedirect("boardList.do");
+		}else {
+			// 삭제 페이지 이동
+			resp.sendRedirect("removeBoard.do?bno="+bno);
+		}
 		
-		req.setAttribute("board", board);
 		
-		req.getRequestDispatcher("WEB-INF/jsp/board.jsp").forward(req, resp);
+		
+	
 
 	}
 
