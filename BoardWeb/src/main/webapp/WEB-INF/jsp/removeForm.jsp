@@ -1,33 +1,33 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
   <%
 	BoardVO board = (BoardVO) request.getAttribute("board");
 	%>
-   	<%@ include file="../includes/header.jsp" %>
+ <jsp:include page="../includes/header.jsp"></jsp:include>
  
 <h3>삭제화면(removeForm.jsp)</h3>
 
 
-   <form action="DeleteBoard.do">
-		<input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
+   <form action="deleteBoard.do">
+		<input type="hidden" name="bno" value="${board.boardNo}">
+		<input type="hidden" name="page" value="${page}">
 	    <table class="table" border="2">
 	    	<tr>
-	    		<th>글번호</th><td><%=board.getBoardNo() %></td>
-	    		<th>조회수</th><td><%=board.getViewCnt() %></td>
+	    		<th>글번호</th><td>${board.boardNo}</td>
+	    		<th>조회수</th><td>${board.viewCnt}</td>
 	    	</tr>
         <tr>
             <th>제목</th>
-            <td colspan="3"><%=board.getTitle() %></td>
+            <td colspan="3">${board.title}</td>
         </tr>
         <tr>
             <th>내용</th>
-            <td colspan="3"><%=board.getContent() %></td>
+            <td colspan="3">${board.content}</td>
         </tr>
         <tr>
             <th>작성자</th>
-            <td colspan="3"><%=board.getWriter() %></td>
+            <td colspan="3">${board.writer}</td>
         </tr>
         <tr>
             <td colspan="4" align="center">
@@ -37,5 +37,4 @@
     </table>
   </form>
   
-  
-     <%@ include file="../includes/footer.jsp" %>
+ <jsp:include page="../includes/footer.jsp"></jsp:include>

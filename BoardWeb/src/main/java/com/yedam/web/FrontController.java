@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.control.ActionControl;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardForm;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.DeleteBoard;
+import com.yedam.control.LoginControl;
+import com.yedam.control.LoginForm;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.StudentListControl;
 import com.yedam.control.UpdateBoard;
 import com.yedam.control.mdBoardControl;
@@ -29,7 +33,7 @@ public class FrontController extends HttpServlet{
 	Map<String, Control> map;
 	
 	public FrontController() {
-		map = new HashMap<>();
+		map = new HashMap<String, Control>();
 	}
 	
 	@Override
@@ -49,6 +53,11 @@ public class FrontController extends HttpServlet{
 		map.put("/modifyBoard.do", new mdBoardControl());
 		//수정 기능
 		map.put("/updateBoard.do", new UpdateBoard());
+		map.put("/action.do", new ActionControl());
+		//로그인
+		map.put("/loginForm.do", new LoginForm());  // 로그인 화면
+		map.put("/login.do", new LoginControl());  // 로그인 기능.
+		map.put("/logout.do", new LogoutControl()); // 로그아웃 기능.
 	}
 
 	@Override
@@ -60,9 +69,15 @@ public class FrontController extends HttpServlet{
 		String context = req.getContextPath(); // 프로젝트 명.
 		String path = uri.substring(context.length()); // /boardList.do;
 		
-		System.out.println(path);  //board.do
+		
+
 		Control sub = map.get(path);
+		try {
 		sub.exec(req, resp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

@@ -18,11 +18,13 @@ public class Board implements Control {
 			throws ServletException, IOException {
 		
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
 		
 		BoardService svc = new BoardServiceImpl();
 		BoardVO board = svc.getBoard(Integer.parseInt(bno));
 		
 		req.setAttribute("board", board);
+		req.setAttribute("page", page);
 		
 		req.getRequestDispatcher("WEB-INF/jsp/board.jsp").forward(req, resp);
 

@@ -18,12 +18,13 @@ public class mdBoardControl implements Control {
 		// TODO Auto-generated method stub
 		
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
 		
 		BoardService svc = new BoardServiceImpl();
 		BoardVO board = svc.getBoard(Integer.parseInt(bno));
 		
 		req.setAttribute("board", board);
-		
+		req.setAttribute("page", page);
 		
 		
 		
