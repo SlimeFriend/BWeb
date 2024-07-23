@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.yedam.vo.MemberVO;
 import com.yedam.vo.StudentVO;
 
 public interface StudentMapper {
@@ -12,5 +13,10 @@ public interface StudentMapper {
 	int insertStudent(StudentVO svo);
 	
 	// 로그인 체크
-	int selectMember(@Param("id") String id, @Param("pw") String pw);
+	MemberVO selectMember(@Param("id") String id, @Param("pw") String pw);
+	
+	
+	List<MemberVO> viewUser();
+	
+	List<MemberVO> orderbyId();
 }

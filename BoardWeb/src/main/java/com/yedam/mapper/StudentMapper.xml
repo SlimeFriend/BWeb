@@ -5,11 +5,24 @@
 <mapper namespace="com.yedam.mapper.StudentMapper">
 
 
-	<select id="selectMember" resultType="int">
-		select count(1)
+	<select id="selectMember" resultType="com.yedam.vo.MemberVO">
+		select *
 		from tbl_member
 		where member_id = #{id}
 		and   member_pw = #{pw}
+	</select>
+	
+	<select id="viewUser" resultType="com.yedam.vo.MemberVO">
+		select *
+		from tbl_member
+		where responsibility = 'User'
+	</select>
+	
+	<select id="orderbyId" resultType="com.yedam.vo.MemberVO">
+		select *
+		from tbl_member
+		where responsibility = 'User'
+		order by member_id
 	</select>
 
 

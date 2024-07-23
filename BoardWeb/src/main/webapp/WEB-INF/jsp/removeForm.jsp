@@ -4,7 +4,6 @@
   <%
 	BoardVO board = (BoardVO) request.getAttribute("board");
 	%>
- <jsp:include page="../includes/header.jsp"></jsp:include>
  
 <h3>삭제화면(removeForm.jsp)</h3>
 
@@ -37,4 +36,3 @@
     </table>
   </form>
   
- <jsp:include page="../includes/footer.jsp"></jsp:include>

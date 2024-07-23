@@ -5,7 +5,7 @@
   <%
 	BoardVO board = (BoardVO) request.getAttribute("board");
 	%>
-   	<%@ include file="../includes/header.jsp" %>
+
  
 <h3>수정화면(modifyForm.jsp)</h3>
 
@@ -43,4 +43,3 @@
   </form>
   
   
-     <%@ include file="../includes/footer.jsp" %>
