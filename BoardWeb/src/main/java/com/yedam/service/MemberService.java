@@ -10,6 +10,8 @@ public interface MemberService {
 	
 	List<MemberVO> viewUser();
 	
-	List<MemberVO> orderbyId();
+	List<MemberVO> orderby(String order);
+	
+	List<MemberVO> res(String res);
 
 }

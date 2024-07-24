@@ -26,11 +26,17 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<MemberVO> orderbyId() {
+	public List<MemberVO> orderby(String order) {
 		
-		return mapper.orderbyId();
+		return mapper.orderby(order);
 	}
-	
+
+	@Override
+	public List<MemberVO> res(String res) {
+		return mapper.res(res);
+	}
+
+
 	
 
 }

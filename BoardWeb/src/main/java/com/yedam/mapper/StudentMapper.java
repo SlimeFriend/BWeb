@@ -18,5 +18,7 @@ public interface StudentMapper {
 	
 	List<MemberVO> viewUser();
 	
-	List<MemberVO> orderbyId();
+	List<MemberVO> res(@Param("res") String res);
+	
+	List<MemberVO> orderby(@Param("order") String order);
 }

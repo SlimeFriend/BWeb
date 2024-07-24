@@ -17,13 +17,23 @@ public class MemberListControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String order = req.getParameter("orderby");
+		
+		order = order == null ? "user" : order;
+		
+		String res = req.getParameter("res");
+		
 		MemberService msvc = new MemberServiceImpl();
 		
 		List<MemberVO> members = msvc.viewUser();
-		List<MemberVO> imembers = msvc.orderbyId();
+		List<MemberVO> orders = msvc.orderby(order);
+		List<MemberVO> cMember = msvc.res(res);
+		
+		
 		
 		req.setAttribute("members", members);
-		req.setAttribute("imembers", imembers);
+		req.setAttribute("orders", orders);
+		req.setAttribute("cmem", cMember);
 		
 		
 		req.getRequestDispatcher("admin/memberList.tiles")

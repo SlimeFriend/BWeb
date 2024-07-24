@@ -33,7 +33,7 @@ public class BoardListControl implements Control {
 		
 
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList(search);
+		List<BoardVO> list = svc.boardList(search); // 서비스 - 매퍼
 		req.setAttribute("boardList", list);
 		
 

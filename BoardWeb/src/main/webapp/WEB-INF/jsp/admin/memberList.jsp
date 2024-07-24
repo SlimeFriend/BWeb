@@ -6,15 +6,24 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
+		<ul class="nav nav-pills">
+  		<li class="nav-item">
+   			 <a class="nav-link active" aria-current="page" href="memberList.do?res=user">사용자</a>
+  		</li>
+ 			<li class="nav-item">
+   			<a class="nav-link" href="memberList.do?res=admin">관리자</a>
+ 			</li>
+		</ul>
+		
 			<th>#</th>
-			<th>이름</th>
-			<th><a href="memberList.do/orderbyId">아이디</a></th>
+			<th><a href="memberList.do?orderbymember_nm">이름</a></th>
+			<th><a href="memberList.do?orderbymember_id">아이디</a></th>
 			<th>비밀번호</th>
 			<th>등급</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="member" items="${members }" varStatus="stat">
+		<c:forEach var="member" items="${members}" varStatus="stat">
 			<tr>
 				<th scope="row">${stat.count }</th>
 				<td>${member.memberNm }</td>

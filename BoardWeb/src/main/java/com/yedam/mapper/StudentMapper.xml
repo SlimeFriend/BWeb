@@ -18,11 +18,16 @@
 		where responsibility = 'User'
 	</select>
 	
-	<select id="orderbyId" resultType="com.yedam.vo.MemberVO">
+	<select id="res" resultType="com.yedam.vo.MemberVO">
 		select *
 		from tbl_member
-		where responsibility = 'User'
-		order by member_id
+		where responsibility = #{res}
+	</select>
+	
+	<select id="orderby" resultType="com.yedam.vo.MemberVO">
+		select *
+		from tbl_member
+		order by ${order}
 	</select>
 
 
