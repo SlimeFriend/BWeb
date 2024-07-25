@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.control.ActionControl;
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AddStudent;
 import com.yedam.control.Board;
 import com.yedam.control.BoardForm;
 import com.yedam.control.BoardListControl;
@@ -20,7 +21,9 @@ import com.yedam.control.LoginControl;
 import com.yedam.control.LoginForm;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
+import com.yedam.control.RemoveStudent;
 import com.yedam.control.ScriptControl;
+import com.yedam.control.StudentJson;
 import com.yedam.control.StudentListControl;
 import com.yedam.control.UpdateBoard;
 import com.yedam.control.mdBoardControl;
@@ -67,6 +70,15 @@ public class FrontController extends HttpServlet{
 		
 		//자바스크립트 연습 페이지
 		map.put("/javascript.do", new ScriptControl());
+		
+		//학생정보 반환해주는 페이지(json).
+		map.put("/studentJson.do", new StudentJson());
+		
+		//학생정보(학번기준) 삭제
+		map.put("/removeStudent.do", new RemoveStudent());
+		
+		//등록
+		map.put("/addStudent.do", new AddStudent());
 	}
 
 	@Override

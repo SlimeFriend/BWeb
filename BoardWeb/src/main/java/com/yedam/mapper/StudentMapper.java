@@ -21,4 +21,6 @@ public interface StudentMapper {
 	List<MemberVO> res(@Param("res") String res);
 	
 	List<MemberVO> orderby(@Param("order") String order);
+	
+	public int deleteStudent(String sno);
 }

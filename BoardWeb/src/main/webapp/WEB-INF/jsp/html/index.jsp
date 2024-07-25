@@ -2,8 +2,57 @@
     pageEncoding="UTF-8"%>
 <!-- html/index.jsp -->
 <h3>연습</h3>
-<div id="show"></div>
-<div>
+
+<div id="student">
+		<table class="table">
+		<tr>
+			<th>학생번호</th><td><input type="text" class="form-control" id="sno"></td>
+		</tr>
+				<tr>
+			<th>이름</th><td><input type="text" class="form-control" id="sname"></td>
+		</tr>
+		<tr>
+			<th>연락처</th><td><input type="text" class="form-control" id="phone"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button id="addBtn" class="btn btn-primary">등록</button>
+			</td>
+		</tr>		
+	</table>
+	
+	<hr />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>학생번호</th><th>학생이름</th><th>연락처</th><th>삭제</th>
+			</tr>
+		</thead>
+		<tbody id="stdList">
+		</tbody>
+	</table>
+</div>
+
+<div id="show">
+	<select class="form-control" id="searchGender">
+		<option value="ALL">선택하세요</option>
+		<option value="Female">여성</option>
+		<option value="Male">남성</option>
+	</select>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>사원번호</th><th>첫이름</th><th>성씨</th><th>급여</th>
+			</tr>
+		</thead>
+		<tbody id="empList">
+		<!-- 사원번호, fname, lname, salary -->
+		</tbody>
+	</table>
+</div>
+
+<div> 
 	<table class="table">
 		<tr>
 			<th>이름</th><td><input type="text" class="form-control" id="fname"></td>
@@ -46,4 +95,4 @@
 
 
 
-<script src="js/json1.js"></script>
+<script src="js/json4.js"></script>
