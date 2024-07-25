@@ -18,6 +18,7 @@
 			<td colspan="2" align="center">
 				<button id="addBtn" class="btn btn-primary">등록</button>
 				<button id="modBtn" class="btn btn-warning">수정</button>
+				<button id="delBtn" class="btn btn-danger">선택삭제</button>
 			</td>
 		</tr>		
 	</table>
@@ -45,4 +46,4 @@
 
 
 
-<script src="js/array1.js"></script>
+<script src="js/json1.js"></script>
