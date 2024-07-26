@@ -33,7 +33,7 @@ function initList() {
 // 사원정보 => row 생성.
 
 function makeRow(emp = {}) {
-	let fields = ['stdNo', 'stdName'];
+	let fields = ['stdNo', 'stdName','stdPhone'];
 	let tr = document.createElement('tr');
 	tr.setAttribute("data-sno", 'stdNo')
 	fields.forEach(field => {

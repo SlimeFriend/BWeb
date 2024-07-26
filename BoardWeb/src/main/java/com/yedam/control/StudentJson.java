@@ -27,9 +27,10 @@ public class StudentJson implements Control {
 		json += "[";
 		for(int i=0; i< list.size(); i++) {
 			json += String.format(
-					"{\"stdNo\": \"%s\",\"stdName\":\"%s\"}",
+					"{\"stdNo\": \"%s\",\"stdName\":\"%s\",\"phone\":\"%s\"}",
 					list.get(i).getStdNo(), 
-					list.get(i).getStdName() );
+					list.get(i).getStdName(), 
+					list.get(i).getStdPhone() );
 			if(i != list.size() -1 ) {
 				json += ",";
 			}

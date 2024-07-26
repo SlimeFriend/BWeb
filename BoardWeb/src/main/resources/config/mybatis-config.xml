@@ -24,9 +24,8 @@
     </environment>
   </environments>
   <mappers>
-   <mapper resource="com/yedam/mapper/StudentMapper.xml"></mapper>
-   <mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
-   
+  
+   <package name="com.yedam.mapper"/>
   </mappers>
   
   

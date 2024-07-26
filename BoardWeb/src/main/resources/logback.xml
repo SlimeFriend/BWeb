@@ -14,5 +14,10 @@
   <root level="error">
     <appender-ref ref="stdout"/>
   </root>
-
+	<logger name="com.yedam.mapper.StudentMapper">
+    <level value="debug"/>
+  </logger>
+  <logger name="com.yedam.mapper.ReplyMapper">
+    <level value="debug"/>
+  </logger>
 </configuration>
