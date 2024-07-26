@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.control.ActionControl;
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AddReplyControl;
 import com.yedam.control.AddStudent;
 import com.yedam.control.Board;
 import com.yedam.control.BoardForm;
@@ -21,7 +22,9 @@ import com.yedam.control.LoginControl;
 import com.yedam.control.LoginForm;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
+import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.RemoveStudent;
+import com.yedam.control.ReplyListControl;
 import com.yedam.control.ScriptControl;
 import com.yedam.control.StudentJson;
 import com.yedam.control.StudentListControl;
@@ -55,30 +58,37 @@ public class FrontController extends HttpServlet{
 		map.put("/removeBoard.do", new rmBoardControl());
 		//삭제 기능
 		map.put("/deleteBoard.do", new DeleteBoard());
-		//수정 화면
+		// 수정 화면
 		map.put("/modifyBoard.do", new mdBoardControl());
-		//수정 기능
+		// 수정 기능
 		map.put("/updateBoard.do", new UpdateBoard());
 		map.put("/action.do", new ActionControl());
-		//로그인
+		// 로그인
 		map.put("/loginForm.do", new LoginForm());  // 로그인 화면
 		map.put("/login.do", new LoginControl());  // 로그인 기능.
 		map.put("/logout.do", new LogoutControl()); // 로그아웃 기능.
 		
-		//관리자가 사용하는 기능들 ex) 회원목록.
+		// 관리자가 사용하는 기능들 ex) 회원목록.
 		map.put("/memberList.do", new MemberListControl());
 		
-		//자바스크립트 연습 페이지
+		// 자바스크립트 연습 페이지
 		map.put("/javascript.do", new ScriptControl());
 		
-		//학생정보 반환해주는 페이지(json).
+		// 학생정보 반환해주는 페이지(json).
 		map.put("/studentJson.do", new StudentJson());
 		
-		//학생정보(학번기준) 삭제
+		// 학생정보(학번기준) 삭제
 		map.put("/removeStudent.do", new RemoveStudent());
 		
-		//등록
+		// 등록
 		map.put("/addStudent.do", new AddStudent());
+		
+		// 댓글목록
+		map.put("/replyList.do", new ReplyListControl());
+		// 댓글등록
+		map.put("/addReply.do", new AddReplyControl());
+		// 댓글삭제
+		map.put("/removeReply.do", new RemoveReplyControl());
 	}
 
 	@Override
