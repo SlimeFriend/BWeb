@@ -12,5 +12,8 @@ public interface ReplyMapper {
 	List<ReplyVO> selectListPaging(SearchDTO search);// 원본글번호, 페이지정보.
 	int insertReply(ReplyVO rvo);			// 댓글등록
 	int deleteReply(int replyNo);			// 댓글삭제
+	// 댓글페이징
+	int totalReplyCnt(int boardNo); // 글번호 댓글 갯수.
+	
 	
 }

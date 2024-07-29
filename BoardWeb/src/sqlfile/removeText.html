@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #show {
+      background: yellow;
+      width: 400px;
+      height: 205px;
+    }
+
+    #show span {
+      display: inline-block;
+      width: 90px;
+      border: 1px solid green;
+      background: pink;
+      margin: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="keyword">
+  <button type="button" id="delbtn">삭제</button>
+  <br>
+  <div id="show">
+    <span>Lorem</span>
+    <span>ipsum</span>
+    <span>dolor</span>
+    <span>sit,</span>
+    <span>amet</span>
+    <span>consectetur</span>
+    <span>adipisicing</span>
+    <span>elit.</span>
+    <span>Maxime,</span>
+    <span>dicta</span>
+    <span>officia</span>
+    <span>similique</span>
+    <span>ratione</span>
+    <span>id</span>
+    <span>labore</span>
+    <span>tempora</span>
+    <span>iure</span>
+    <span>harum</span>
+    <span>provident,</span>
+    <span>deleniti</span>
+    <span>odio</span>
+    <span>esse</span>
+    <span>officiis</span>
+    <span>illo</span>
+    <span>eos</span>
+    <span>illum</span>
+    <span>quae</span>
+    <span>veritatis</span>
+    <span>vero</span>
+    <span>doloribus.</span>
+  </div>
+  <p id="timer"></p>
+  <p id="seconds"></p>
+  <br>
+
+  <script>
+    let a = document.getElementById("delbtn")
+    a.addEventListener('click', function(e){
+      let k = document.getElementById("keyword").value;
+      let q = document.querySelectorAll('#show span');
+      q.forEach(word => {
+        if(word.innerHTML == k){
+          word.remove();
+        }
+      })
+    })
+
+    // 교수님 답안
+    // document.querySelector('#keyword').addEventListener('change', function(e) {
+    //   let keyword = this.value;
+
+    //   document.querySelectorAll('#show span').forEach(word => {
+    //     if(word.innerHTML == keyword) {
+    //       word.remove();
+    //     }
+    //     if(document.querySelectorAll('#show span').length == 0){
+    //       alert('미션성공');
+    //       clearInterval(job);
+    //     }
+    //   }) // end of forEach
+    //   this.vlaue = '';
+    // })
+
+
+    // 남은 시간과 남은 갯수 비교
+    let remainTime = 100;
+    let job = setInterval(function () {
+      document.querySelector('#timer').innerHTML = new Date();
+
+      document.querySelector('#seconds').innerHTML = remainTime;
+      if(remainTime < 0 ) {
+        alert('미션실패!!');
+        document.querySelector('#seconds').innerHTML = 0;
+        clearInterval(job);
+      }
+
+      remainTime--;
+    }, 1000);
+  </script>
+</body>
+
+</html>
