@@ -1,0 +1,20 @@
+document.querySelectorAll('ul.cate_prd_list>li>div.prd_info>a>img').forEach(image => console.log(image));
+
+
+
+올리브영 랭킹사이트에서 콘솔에 사용.
+
+let prodAry = [];
+
+document.querySelectorAll('ul.cate_prd_list>li>div.prd_info')
+	.forEach(item => {
+	let imgSrc = item.querySelector('a>img').src;
+	let prdName = item.querySelector('div.prd_name p.tx_name').innerHTML;
+	let prodCode = item.querySelector('a').dataset.refGoodsno;
+	let prodPrice = item.querySelector('p.prd_price>span>span').innerHTML;
+	prodAry.push({imgSrc, prdName, prodCode, prodPrice});
+	});
+	
+let json = JSON.stringify(prodAry);
+
+console.log(json);
