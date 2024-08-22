@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.ScheduleVO;
 
 /*
  * 글목록, 등록, 수정, 삭제, 단건조회
@@ -11,7 +12,7 @@ import com.yedam.vo.BoardVO;
  */
 
 public interface BoardMapper {
-//	List<BoardVO> selectList();
+	List<BoardVO> selectList();
 	List<BoardVO> selectListPaging(SearchDTO search); // 페이지정보 -> 5건씩 출력.
 	
 	// 페이징 계산하기 위한 전체 건수
@@ -25,5 +26,9 @@ public interface BoardMapper {
 	
 	int deleteBoard(int boardNo);
 	
+	List<ScheduleVO> scheduleList();
 	
+	int addSchedule(ScheduleVO svo);
+	
+	int delSchedule(ScheduleVO svo);
 }

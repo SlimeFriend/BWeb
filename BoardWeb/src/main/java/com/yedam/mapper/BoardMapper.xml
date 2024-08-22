@@ -102,5 +102,22 @@
   	where  board_no = #{boardNo}
   </select>
   
+  <select id = "scheduleList" resultType="com.yedam.vo.ScheduleVO">
+  	select start_date as "start",
+  				end_date as "end",
+  				title
+  	from tbl_schedule
+  </select>
   
+  <insert id = "addSchedule" parameterType="com.yedam.vo.ScheduleVO">
+  	insert into tbl_schedule(title, start_date, end_date)
+  	values (#{title},#{start},#{end})
+  </insert>
+  
+  <delete id = "delSchedule" parameterType="com.yedam.vo.ScheduleVO">
+  	delete tbl_schedule
+  	where start_date = #{start}
+  	and   end_date = #{end}
+  	and   title = #{title}
+  </delete>
 </mapper>
