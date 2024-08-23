@@ -29,7 +29,7 @@ public class ReplyListControl implements Control {
 		
 		SearchDTO search = new SearchDTO();
 		search.setBno(Integer.parseInt(bno));
-//		search.setPage(Integer.parseInt(page));
+		search.setPage(Integer.parseInt(page));
 			
 		ReplyService svc = new ReplyServiceImpl();
 		List<ReplyVO> list = svc.replyList(search);
@@ -39,7 +39,8 @@ public class ReplyListControl implements Control {
 		
 		// json 문자열
 		Gson gson = new GsonBuilder().create();
-		String json = gson.toJson(map);       // datatable연습
+		String json = gson.toJson(list);
+		//String json = gson.toJson(map);       // datatable연습
 		
 		resp.getWriter().print(json);
 		
