@@ -59,6 +59,12 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.selectCountByMember();
 	}
 
+	@Override
+	public String signOutProc(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return mapper.deleteMemberProc(map);
+	}
+
 
 	
 

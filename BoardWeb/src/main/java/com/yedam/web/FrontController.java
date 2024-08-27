@@ -33,6 +33,7 @@ import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.RemoveStudent;
 import com.yedam.control.ReplyListControl;
 import com.yedam.control.ScriptControl;
+import com.yedam.control.SignOutControl;
 import com.yedam.control.StudentJson;
 import com.yedam.control.StudentListControl;
 import com.yedam.control.UpdateBoard;
@@ -117,6 +118,9 @@ public class FrontController extends HttpServlet{
 		
 		// 달력 스케 삭
 		map.put("/deleteschd.do", new DeleteSchdControl());
+		
+		// 회원탈퇴
+		map.put("/signout.do", new SignOutControl());
 	}
 
 	@Override
